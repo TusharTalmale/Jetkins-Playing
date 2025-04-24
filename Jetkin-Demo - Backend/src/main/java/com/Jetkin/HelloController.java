@@ -18,6 +18,6 @@ public class HelloController {
     }
 
     public String getHello(){
-        return "Hello From SpringBoot";
+        return "Hello From wow SpringBoot";
     }
 }
