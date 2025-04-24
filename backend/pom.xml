@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.Jetkin</groupId>
-	<artifactId>Jetkin-Demo</artifactId>
+	<artifactId>backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Jetkin-Demo</name>
 	<description>Demo project for Spring Boot , Jetkin demo</description>
