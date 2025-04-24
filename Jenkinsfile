@@ -15,7 +15,7 @@ pipeline {
         stage('Build Backend') {
             steps {
                 echo 'Building Spring Boot backend'
-                sh 'cd backend && mvn clean package -DskipTests'
+                sh 'cd Jetkin-Demo - Backend && mvn clean package -DskipTests'
             }
         }
         stage('Build Frontend') {
