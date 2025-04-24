@@ -1,10 +1,10 @@
 pipeline {
     agent any
     environment {
-        DOCKER_REGISTRY = 'tushartalmale'
-        BACKEND_IMAGE_NAME = "${DOCKER_REGISTRY}/Jetkin-Demo - Backend"
-        FRONTEND_IMAGE_NAME = "${DOCKER_REGISTRY}/frontend"
-        IMAGE_TAG = 'latest' // Or use a dynamic tag like build number
+        DOCKER_REGISTRY = 'yourdockerhubusername' // Replace with your Docker Hub username
+        BACKEND_IMAGE_NAME = "${DOCKER_REGISTRY}/my-backend-app"
+        FRONTEND_IMAGE_NAME = "${DOCKER_REGISTRY}/my-frontend-app"
+        IMAGE_TAG = 'latest'
     }
     stages {
         stage('Checkout Code') {
@@ -36,19 +36,16 @@ pipeline {
                 sh "cd frontend && docker build -t ${FRONTEND_IMAGE_NAME}:${IMAGE_TAG} -f Dockerfile ."
             }
         }
-        stage('Push Docker Images') {
-            steps {
-                withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
-                    echo "Logging into Docker registry: ${DOCKER_REGISTRY}"
-                    sh "docker login -u '$DOCKER_USERNAME' -p '$DOCKER_PASSWORD' ${DOCKER_REGISTRY}"
-
-                    echo "Pushing backend Docker image: ${BACKEND_IMAGE_NAME}:${IMAGE_TAG}"
-                    sh "docker push ${BACKEND_IMAGE_NAME}:${IMAGE_TAG}"
-
-                    echo "Pushing frontend Docker image: ${FRONTEND_IMAGE_NAME}:${IMAGE_TAG}"
-                    sh "docker push ${FRONTEND_IMAGE_NAME}:${IMAGE_TAG}"
-                }
-            }
-        }
+        // Optional: Add a stage to push the Docker images (requires Docker credentials in Jenkins)
+        // stage('Push Docker Images') {
+        //     steps {
+        //         withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+        //             echo "Logging into Docker registry: ${DOCKER_REGISTRY}"
+        //             sh "docker login -u '$DOCKER_USERNAME' -p '$DOCKER_PASSWORD' ${DOCKER_REGISTRY}"
+        //             sh "docker push ${BACKEND_IMAGE_NAME}:${IMAGE_TAG}"
+        //             sh "docker push ${FRONTEND_IMAGE_NAME}:${IMAGE_TAG}"
+        //         }
+        //     }
+        // }
     }
 }

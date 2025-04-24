@@ -1,9 +1,9 @@
 # Stage 1: Build the React application
 FROM node:19-alpine AS builder
 WORKDIR /app
-COPY frontend/package*.json ./
+COPY package*.json ./
 RUN npm install --frozen-lockfile
-COPY frontend .
+COPY . .
 RUN npm run build
 
 # Stage 2: Serve the static assets with Nginx
