@@ -1,0 +1,11 @@
+.page {
+    text-align: center;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .page p {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
