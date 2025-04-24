@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        DOCKER_REGISTRY = 'yourdockerhubusername' // Replace with your Docker Hub username
+        DOCKER_REGISTRY = 'tushartalmale' // Replace with your Docker Hub username
         BACKEND_IMAGE_NAME = "${DOCKER_REGISTRY}/my-backend-app"
         FRONTEND_IMAGE_NAME = "${DOCKER_REGISTRY}/my-frontend-app"
         IMAGE_TAG = 'latest'
