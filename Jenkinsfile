@@ -16,6 +16,7 @@ pipeline {
         stage('Build Backend') {
             steps {
                 echo 'Building Spring Boot backend'
+                tool name: 'MAVEN_HOME'
                 sh 'cd backend && mvn clean package -DskipTests'
             }
         }
